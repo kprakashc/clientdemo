@@ -7,5 +7,9 @@ pipeline {
                 sh "hostname -i"
             }
         }
+        stage ('Fortify') {
+            steps {
+                echo "Scanning the code"
+            }
     }
 }
