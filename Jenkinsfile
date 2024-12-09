@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('Build'){
+        stage ('QRBuild'){
             steps {
                 echo "Build pipeline"
                 sh "hostname -i"
