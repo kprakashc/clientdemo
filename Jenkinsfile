@@ -1,16 +1,27 @@
 pipeline {
     agent any
     stages {
-        stage ('FirstStagescm'){
+        stage ('Build'){
             steps {
-                echo "first pipeline"
+                echo "Build pipeline"
                 sh "hostname -i"
             }
         }
-        stage ('Fortify') {
+        stage ('ScanFortify') {
             steps {
                 echo "Scanning the code"
             }
         }
+        stage ('dockerbuild') {
+            steps {
+                echo "Docker Pipeline"
+            }
+        }
+        stage ('devdeploy') {
+            steps {
+                echo "devdeploy pipeline"
+            }
+        }
+
     }
 }
