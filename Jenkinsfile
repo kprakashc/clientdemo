@@ -11,5 +11,6 @@ pipeline {
             steps {
                 echo "Scanning the code"
             }
+        }
     }
 }
