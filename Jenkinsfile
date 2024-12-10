@@ -17,9 +17,24 @@ pipeline {
                 echo "Docker Pipeline"
             }
         }
-        stage ('devdeploy') {
+        stage ('dockerdeploy') {
             steps {
-                echo "devdeploy pipeline"
+                echo "dockerdeploy pipeline"
+            }
+        }
+        stage ('testdeploy') {
+            steps {
+                echo "testdeploy pipeline"
+            }
+        }
+        stage ('Deploy to stage') {
+            steps {
+                echo "deploy to stage"
+            }
+        }
+        stage ('Prod deployment') {
+            steps {
+                echo "Prod deployment"
             }
         }
 
