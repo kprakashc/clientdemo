@@ -1,16 +1,21 @@
-//https://www.jenkins.io/doc/book/pipeline/syntax/#when
 pipeline {
     agent any
-    environment {
-        DEPLOY_TO = 'Production'
+    env {
+        DEPLOY_TO = 'production'
     }
     stages {
-        stage ('prod deploy') {
+        stage ('DeployTo Dev') {
+            steps {
+                echo "Deploying to Dev Environment"
+            }
+        }
+        stage('ProdDeploy') {
             when {
-                environment name : 'DEPLOY_TO', value: 'Production'
+                //branch condition
+                expression {BRANCH_NAME == /(production|staging)/ }
             }
             steps {
-                echo "Deploying to Production"
+                echo "Deploying to production"
             }
         }
     }
