@@ -2,20 +2,37 @@ pipeline {
     agent any
     environment {
         DEPLOY_TO = 'production'
+
     }
     stages {
-        stage ('DeployTo Dev') {
+        stage ('Deploy to dev') {
             steps {
-                echo "Deploying to Dev Environment"
+              echo " Deploy to Developement"
+        }  
+            }
+            
+        
+        stage ('Deploy to test') {
+            steps {
+                echo " Deploy to test "
+
+            }
+
+        }
+        stage ('Deploy to stage') {
+            when {
+                branch 'release/*'
+            }
+            steps {
+                echo "Deploying to stage"
             }
         }
-        stage('ProdDeploy') {
+        stage ('Deploy to prod') {
             when {
-                //branch condition
-                expression {BRANCH_NAME == /(production|staging)/ }
+                tag pattern: "v\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}\\",comparator:  "REGEXP"
             }
             steps {
-                echo "Deploying to production"
+                echo "Deploying to prod"
             }
         }
     }
